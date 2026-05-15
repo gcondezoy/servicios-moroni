@@ -1,0 +1,146 @@
+.navbar {
+  // CLAVE: Aseguramos que sea fija y ocupe todo el ancho
+  position: fixed; 
+  top: 0;
+  left: 0; // Agregado para asegurar que empiece desde el borde izquierdo
+  width: 100%;
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  z-index: 2000;
+  transition: all 0.3s ease;
+
+  // Evita que elementos internos empujen el ancho de la pantalla en móviles
+  box-sizing: border-box; 
+
+  &.scrolled {
+    height: 70px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  // Contenedor interno
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; // Reducido un poco para móviles
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    height: 80px; // Reducido un poco para que no se vea gigante
+    transition: opacity 0.3s ease;
+    img { height: 100%; object-fit: contain; }
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.6rem;
+    color: var(--primary);
+    cursor: pointer;
+    z-index: 2200;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: 500;
+        transition: all 0.3s;
+        
+        &.active:not(.mobile-cta) { 
+          color: var(--secondary); 
+          font-weight: 700; 
+        }
+        
+        &:hover:not(.mobile-cta) { 
+          color: var(--secondary); 
+        }
+      }
+
+      // CORRECCIÓN DEL BOTÓN VACÍO
+      .mobile-cta {
+        background-color: var(--secondary);
+        color: #ffffff !important; // FUERZA COLOR BLANCO
+        padding: 0.7rem 1.6rem;
+        border-radius: 5px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+        box-shadow: 0 4px 10px rgba(212, 20, 20, 0.2);
+
+        &:hover { 
+          background-color: #b91010; 
+          color: #ffffff !important;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 15px rgba(212, 20, 20, 0.3);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .menu-toggle { display: block; }
+
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.4s ease;
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 2.5rem;
+
+        a {
+          font-size: 1.8rem;
+          &.mobile-cta {
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            width: 220px; // Ancho fijo en móvil para que se vea pro
+          }
+        }
+      }
+    }
+  }
+}
+
+// ARREGLO PARA EL RESPONSIVE GENERAL
+// Agrega esto a tu App.scss o archivo global para evitar el desbordamiento
+body, html {
+  overflow-x: hidden; // Evita el scroll horizontal que rompe el responsive
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-top: 80px; // Empuja el contenido para que no quede debajo de la barra fija
+  width: 100%;
+}

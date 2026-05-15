@@ -1,0 +1,216 @@
+.about-page {
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2; // Asegura que el texto quede sobre el filtro oscuro del Hero
+  }
+
+  // 1. MEJORA EN EL HERO (Fondo Fotográfico)
+  .about-hero {
+    position: relative;
+    padding: 12rem 0 8rem;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+
+    &__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      // Gradiente oscuro idéntico al Home para mantener identidad
+      background: linear-gradient(135deg, rgba(8, 18, 33, 0.95) 0%, rgba(8, 18, 33, 0.7) 100%);
+      z-index: 1;
+    }
+
+    .overline {
+      display: block;
+      color: var(--secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -1px;
+      .highlight { color: var(--secondary); }
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+  }
+
+// Asegúrate de usar estas variables o reemplázalas por tus colores hexadecimales
+$primary: #123A6D; // Tu azul marino corporativo
+$secondary: #D41414; // Tu rojo corporativo
+$text-muted: #667085;
+
+.mission-vision-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; // Espacio entre las dos tarjetas
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .mv-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem; // Espacio entre el icono y el texto
+    padding: 2.5rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border-color: rgba(212, 20, 20, 0.1);
+    }
+
+    // Estilo del Contenedor del Icono
+    .mv-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(212, 20, 20, 0.1); // Rojo con opacidad baja
+      color: var(--secondary); // Tu rojo corporativo
+      border-radius: 50%; // Círculo
+      font-size: 1.8rem; // Tamaño del icono SVG
+      flex-shrink: 0; // Evita que se deforme
+    }
+
+    // Estilo del Contenido de Texto (Alineado a la izquierda)
+    .mv-content {
+      h2 {
+        font-size: 1.8rem;
+        color: var(--primary); // Tu azul marino corporativo
+        margin-bottom: 1rem;
+        margin-top: 0;
+        text-align: left; // Alineación corporativa
+      }
+
+      p {
+        color: $text-muted;
+        line-height: 1.7;
+        margin: 0;
+        text-align: left; // Alineación corporativa
+      }
+    }
+  }
+}
+
+  // 3 y 4. MEJORA EN EQUIPO (Fotos y Hover)
+  .team-section {
+    padding: 6rem 0;
+    background: #fff;
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; letter-spacing: -0.5px;}
+      p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;}
+    }
+
+    .team-profiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) { grid-template-columns: 1fr; }
+    }
+
+    .profile-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--secondary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; // Animación
+      
+      display: flex; // Usamos Flexbox para poner la foto al lado del texto
+      gap: 2rem; 
+      align-items: flex-start;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      }
+
+      .profile-image-placeholder {
+        flex-shrink: 0; // Evita que la foto se aplaste
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; // Hace la foto circular
+        overflow: hidden;
+        border: 3px solid #f1f5f9;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .profile-info {
+        h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .position { 
+          display: inline-block; 
+          color: var(--secondary); 
+          font-weight: 700; 
+          margin-bottom: 1rem;
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0;}
+      }
+    }
+  }
+}

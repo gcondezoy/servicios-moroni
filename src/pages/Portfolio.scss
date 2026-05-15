@@ -1,0 +1,162 @@
+.portfolio-page {
+  background-color: var(--bg-light);
+
+  /* --- ESTILOS DEL NUEVO HERO --- */
+  .portfolio-hero {
+    position: relative;
+    // CORRECCIÓN VITAL: 
+    // Usamos margin-top para empujar todo por debajo del Navbar (80px aprox)
+    // y luego el padding interno para darle aire.
+    padding: 8rem 0 6rem; // Ajustado para que no sea excesivamente alto
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+
+    &__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8, 18, 33, 0.95) 0%, rgba(8, 18, 33, 0.7) 100%);
+      z-index: 1;
+    }
+
+    .relative-z {
+      position: relative;
+      z-index: 2; 
+      padding: 0 1.5rem; // Aire lateral para que el texto no choque en móvil
+    }
+
+    .overline {
+      display: block;
+      color: var(--secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      // Usamos clamp como en la Home para que escale perfecto
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+      line-height: 1.1; // Para que no se aprieten las líneas en móvil
+      
+      .highlight { color: var(--secondary); }
+    }
+
+    p {
+      font-size: clamp(1rem, 3vw, 1.2rem); // Escala el párrafo en móvil
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  /* --- CSS ORIGINAL PARA LA GALERÍA CON CORRECCIONES MOBILE --- */
+  .gallery-section {
+    padding: 5rem 0;
+
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 0 1.5rem; // Reducido a 1.5rem para pantallas pequeñas
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 4rem;
+
+      button {
+        background: transparent;
+        border: 2px solid #E5E7EB;
+        color: var(--text-muted);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease; // Mejorado para evitar bugs visuales
+
+        &:hover, &.active {
+          background: var(--primary);
+          color: #fff;
+          border-color: var(--primary);
+        }
+      }
+    }
+
+    .gallery-grid {
+      display: grid;
+      // CORRECCIÓN VITAL PARA MÓVILES: Bajamos de 350px a 280px 
+      // para evitar que rompa la pantalla de los celulares.
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+
+      .gallery-item {
+        position: relative;
+        height: 300px;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+
+        .overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(8, 18, 33, 0.9) 0%, rgba(8, 18, 33, 0.2) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 2rem;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.4s ease;
+
+          .tag {
+            color: var(--secondary); // Cambiado a tu rojo institucional
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+          }
+
+          h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0;
+          }
+        }
+
+        &:hover {
+          img { transform: scale(1.1); }
+          .overlay {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+}
