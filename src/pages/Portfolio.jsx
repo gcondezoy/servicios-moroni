@@ -13,15 +13,24 @@ const Portfolio = () => {
   const projects = [
     { 
       id: 1, 
-      title: 'Oficinas Tech Lima', 
-      category: 'Drywall', 
-      img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-      longDesc: 'Implementación completa de tabiquería en drywall para oficinas de tecnología, priorizando aislamiento acústico y acabados de primera.',
-      specs: ['Aislamiento termoacústico con lana de vidrio', 'Estructura reforzada para monitores', 'Acabado en pintura epóxica'],
+      title: 'Clóset Empotrado a Medida', 
+      category: 'Carpinteria', 
+      img: '/proyectos/closet-empotrado-de-melamina-a-medida.jpeg',
+      longDesc: 'Diseño, fabricación e instalación de clóset empotrado de piso a techo con sistema de puertas corredizas. Optimizamos al máximo el espacio interior distribuyendo estratégicamente zonas de colgado, cajoneras reforzadas y múltiples niveles de repisas, todo con un acabado texturizado premium que combina estética y alta durabilidad.',
+     specs: [
+    'Melamina de alta densidad de 18mm con textura maderada',
+    'Sistema corredizo de aluminio de alta suavidad con rieles embutidos',
+    'Cajoneras internas con correderas telescópicas pesadas',
+    'Interior optimizado con colgadores cromados y maletero superior independiente',
+    'Ajuste milimétrico y sellado perimetral contra muros y techo'
+  ],
       media: [
-        { type: 'image', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80' },
-        { type: 'image', url: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80' }
-      ]
+    { type: 'image', url: '/proyectos/closet-empotrado-de-melamina-a-medida.jpeg' },
+    { type: 'image', url: '/proyectos/closet-de-melamina-con-puertas-corredizas-y-repisas.jpeg' },
+    { type: 'image', url: '/proyectos/closet-empotrado-con-cajoneras-internas.jpeg' },
+    { type: 'image', url: '/proyectos/closet-maderado-de-piso-a-techo-servicios-moroni.jpeg' },
+    { type: 'image', url: '/proyectos/mueble-closet-de-melamina-para-dormitorio.jpeg' }
+  ]
     },
     { 
       id: 2, 
