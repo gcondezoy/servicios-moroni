@@ -33,17 +33,25 @@ const Portfolio = () => {
   ]
     },
     { 
-      id: 2, 
-      title: 'Mobiliario Retail', 
-      category: 'Carpintería', 
-      img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
-      longDesc: 'Diseño y fabricación de exhibidores a medida para tienda retail en centro comercial, combinando madera natural con estructuras metálicas.',
-      specs: ['Madera pino tratada', 'Estructura metálica en pintura al horno', 'Iluminación LED integrada'],
-      media: [
-        { type: 'image', url: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80' },
-        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4' }, // Ejemplo de video (puedes poner tu propio enlace mp4)
-        { type: 'image', url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80' }
-      ]
+      id: 2, // El ID correlativo que toque en tu lista
+  title: 'Ropero Empotrado Gris Grafito Premium',
+  category: 'Carpintería',
+  img: '/closet-moderno-melamina-gris-grafito.jpeg', // Imagen principal
+  longDesc: 'Fabricación integral de clóset empotrado de gran formato (4 cuerpos) en melamina de tono gris grafito. Diseñado a medida de piso a techo, maximiza el almacenamiento con un centro de cajones ocultos, repisas laterales modulares y percheros de doble altura, todo protegido por un sistema de puertas corredizas sutiles y maleteros superiores optimizados.',
+  specs: [
+    'Melamina premium de 18mm color gris grafito mate',
+    'Configuración de 4 paños con sistema corredizo silencioso de aluminio',
+    'Módulo central con cajoneras ocultas de apertura total',
+    'Distribución interna simétrica con percheros cromados de alta resistencia',
+    'Estructura empotrada con zócalo y ajuste perfecto a paredes de concreto'
+  ],
+  media: [
+    { type: 'image', url: '/closet-moderno-melamina-gris-grafito.jpeg' },
+    { type: 'image', url: '/closet-empotrado-gris-con-cajones.jpeg' },
+    { type: 'image', url: '/closet-de-melamina-distribucion-interior.jpeg' },
+    { type: 'image', url: '/mueble-closet-gris-puertas-corredizas.jpeg' },
+    { type: 'image', url: '/closet-mueble-a-medida-dormitorio-lima.jpeg' }
+  ]
     },
     { 
       id: 3, 
