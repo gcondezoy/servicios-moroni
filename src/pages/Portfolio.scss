@@ -136,10 +136,6 @@
             font-size: 1.5rem;
             margin: 0;
           }
-
-          .desc {
-            margin: 0;
-          }
         }
 
         &:hover {
@@ -150,9 +146,7 @@
     }
   }
 
-  /* ========================================================
-     NUEVOS ESTILOS: MODAL DE DETALLE Y CARRUSEL (SLIDER)
-  ======================================================== */
+  /* --- COMPONENTE REDISEÑADO: MODAL DE DETALLE --- */
   .project-modal-overlay {
     position: fixed;
     inset: 0;
@@ -200,32 +194,32 @@
       
       &:hover { 
         transform: rotate(90deg); 
-        background: darken(#f15a24, 10%); /* Ajuste sutil de color */
+        background: #d14d1e;
       }
     }
 
     .modal-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr; // El carrusel ocupa un poco más que el texto
+      grid-template-columns: 1.2fr 1fr; 
       
       @media (max-width: 992px) { 
-        grid-template-columns: 1fr; // En celular se apila
+        grid-template-columns: 1fr; 
       }
     }
 
-    /* --- ESTILOS DEL SLIDER --- */
+    /* --- ESTILOS DEL SLIDER CON INTERPOLACIÓN EFECTO CINE --- */
     .modal-slider {
       position: relative;
-      background: #f1f5f9;
+      background: #081221; 
       height: 100%;
-      min-height: 400px;
+      min-height: 450px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
 
       @media (max-width: 992px) { 
-        min-height: 300px;
+        min-height: 350px;
       }
 
       .media-container {
@@ -233,12 +227,32 @@
         height: 100%;
         position: absolute;
         inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
         
+        /* Capa oculta trasera: Desenfoque Dinámico */
+        &::before {
+          content: "";
+          position: absolute;
+          inset: -20px; 
+          background-image: inherit; /* Hereda dinámicamente la foto del style inline */
+          background-size: cover;
+          background-position: center;
+          filter: blur(25px) brightness(0.4); 
+          z-index: 1;
+        }
+
+        /* Capa delantera: Imagen Nítida Completa */
         img, video {
+          position: relative;
+          z-index: 2;
           width: 100%;
           height: 100%;
           object-fit: contain; 
-          padding: 1rem;
+          padding: 1.5rem; 
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
         }
       }
 
@@ -246,7 +260,7 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.8);
         border: none;
         width: 45px;
         height: 45px;
@@ -258,6 +272,7 @@
         color: var(--primary);
         transition: all 0.2s ease;
         line-height: 1;
+        z-index: 10;
 
         &:hover {
           background: white;
@@ -275,13 +290,13 @@
         transform: translateX(-50%);
         display: flex;
         gap: 0.5rem;
-        z-index: 5;
+        z-index: 10;
 
         .dot {
           width: 10px;
           height: 10px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.5);
+          background: rgba(255,255,255,0.4);
           cursor: pointer;
           transition: all 0.3s ease;
 
@@ -293,13 +308,16 @@
       }
     }
 
-    /* --- ESTILOS DEL TEXTO DEL MODAL --- */
+    /* --- PANEL DE INFORMACIÓN DEL PROYECTO --- */
     .modal-text {
-      padding: 3rem 2.5rem;
+      padding: 3.5rem 2.5rem;
       background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       
       @media (max-width: 576px) {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem;
       }
 
       .modal-tag { 
@@ -326,7 +344,7 @@
       }
 
       .specs-container {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
         background: #f8fafc;
         padding: 1.5rem;
         border-radius: 8px;
@@ -345,9 +363,6 @@
           margin: 0;
           
           li { 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 0.2rem; 
             margin-bottom: 0.8rem; 
             color: #475569; 
             font-size: 0.95rem;
@@ -368,16 +383,16 @@
         font-weight: 700;
         transition: all 0.3s ease;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(241, 90, 36, 0.2);
         
         @media (max-width: 576px) {
           width: 100%; 
         }
 
         &:hover { 
-          background: darken(#f15a24, 10%); 
+          background: #d14d1e; 
           transform: translateY(-3px); 
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 25px rgba(241, 90, 36, 0.35);
         }
       }
     }
