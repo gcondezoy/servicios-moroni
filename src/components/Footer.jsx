@@ -36,7 +36,7 @@ const Footer = () => {
           {/* Columna 3: Contacto */}
           <div className="footer__contact">
             <h3>Contáctanos</h3>
-            <p>Av. Florencia de Mora, Trujillo - Perú</p>
+            <p>Florencia de Mora, Trujillo - Perú</p>
             <p>nunjajulio@gmail.com</p>
             <p className="phone">+51 924 353 323</p>
           </div>
