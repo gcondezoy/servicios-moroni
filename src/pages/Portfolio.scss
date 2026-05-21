@@ -1,162 +1,388 @@
 .portfolio-page {
-  background-color: var(--bg-light);
+background-color: var(--bg-light);
 
-  /* --- ESTILOS DEL NUEVO HERO --- */
-  .portfolio-hero {
+// --- HERO ---
+.portfolio-hero {
+position: relative;
+padding: 8rem 0 6rem;
+color: #fff;
+text-align: center;
+overflow: hidden;
+background-size: cover;
+background-position: center;
+
+&__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8, 18, 33, 0.95) 0%, rgba(8, 18, 33, 0.7) 100%);
+  z-index: 1;
+}
+
+.relative-z {
+  position: relative;
+  z-index: 2; 
+  padding: 0 1.5rem; 
+}
+
+.overline {
+  display: block;
+  color: var(--secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  line-height: 1.1; 
+  
+  .highlight { color: var(--secondary); }
+}
+
+p {
+  font-size: clamp(1rem, 3vw, 1.2rem); 
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+}
+
+// --- GALERÍA ---
+.gallery-section {
+padding: 5rem 0;
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 1.5rem; 
+}
+
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+
+  button {
+    background: transparent;
+    border: 2px solid #E5E7EB;
+    color: var(--text-muted);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+
+    &:hover, &.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+
+  .gallery-item {
     position: relative;
-    // CORRECCIÓN VITAL: 
-    // Usamos margin-top para empujar todo por debajo del Navbar (80px aprox)
-    // y luego el padding interno para darle aire.
-    padding: 8rem 0 6rem; // Ajustado para que no sea excesivamente alto
-    color: #fff;
-    text-align: center;
+    height: 300px;
+    border-radius: 4px;
     overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 
-    &__bg {
-      position: absolute;
-      inset: 0;
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
+      transition: transform 0.6s ease;
     }
 
-    &__overlay {
+    .overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(8, 18, 33, 0.95) 0%, rgba(8, 18, 33, 0.7) 100%);
-      z-index: 1;
-    }
-
-    .relative-z {
-      position: relative;
-      z-index: 2; 
-      padding: 0 1.5rem; // Aire lateral para que el texto no choque en móvil
-    }
-
-    .overline {
-      display: block;
-      color: var(--secondary);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-
-    h1 {
-      // Usamos clamp como en la Home para que escale perfecto
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-      line-height: 1.1; // Para que no se aprieten las líneas en móvil
-      
-      .highlight { color: var(--secondary); }
-    }
-
-    p {
-      font-size: clamp(1rem, 3vw, 1.2rem); // Escala el párrafo en móvil
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
-
-  /* --- CSS ORIGINAL PARA LA GALERÍA CON CORRECCIONES MOBILE --- */
-  .gallery-section {
-    padding: 5rem 0;
-
-    .container {
-      max-width: 1250px;
-      margin: 0 auto;
-      padding: 0 1.5rem; // Reducido a 1.5rem para pantallas pequeñas
-    }
-
-    .filter-tabs {
+      background: linear-gradient(to top, rgba(8, 18, 33, 0.9) 0%, rgba(8, 18, 33, 0.2) 100%);
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 4rem;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
 
-      button {
-        background: transparent;
-        border: 2px solid #E5E7EB;
-        color: var(--text-muted);
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        font-family: 'Inter', sans-serif;
-        cursor: pointer;
-        transition: all 0.3s ease; // Mejorado para evitar bugs visuales
+      .tag {
+        color: var(--secondary); 
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+      }
 
-        &:hover, &.active {
-          background: var(--primary);
-          color: #fff;
-          border-color: var(--primary);
-        }
+      h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .desc {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
       }
     }
 
-    .gallery-grid {
-      display: grid;
-      // CORRECCIÓN VITAL PARA MÓVILES: Bajamos de 350px a 280px 
-      // para evitar que rompa la pantalla de los celulares.
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-
-      .gallery-item {
-        position: relative;
-        height: 300px;
-        border-radius: 4px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.6s ease;
-        }
-
-        .overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to top, rgba(8, 18, 33, 0.9) 0%, rgba(8, 18, 33, 0.2) 100%);
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          padding: 2rem;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.4s ease;
-
-          .tag {
-            color: var(--secondary); // Cambiado a tu rojo institucional
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-          }
-
-          h3 {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0;
-          }
-        }
-
-        &:hover {
-          img { transform: scale(1.1); }
-          .overlay {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+    &:hover {
+      img { transform: scale(1.1); }
+      .overlay {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }
 }
+
+
+}
+
+// --- MODAL DE DETALLE Y SLIDER ---
+.project-modal-overlay {
+position: fixed;
+inset: 0;
+background: rgba(8, 18, 33, 0.85);
+z-index: 9999;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+backdrop-filter: blur(6px);
+
+@media (max-width: 576px) {
+  padding: 1rem;
+}
+
+
+}
+
+.project-modal-content {
+background: #fff;
+width: 100%;
+max-width: 1000px;
+border-radius: 8px;
+overflow: hidden;
+position: relative;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+  
+  &:hover { 
+    transform: rotate(90deg); 
+    background: var(--primary);
+    color: #fff;
+  }
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+  @media (max-width: 992px) { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+// Estilos del nuevo Slider
+.modal-image-slider {
+  position: relative;
+  height: 100%;
+  background: #f1f5f9;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .slider-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+
+    &:hover { background: #fff; }
+    
+    &.prev { left: 15px; }
+    &.next { right: 15px; }
+  }
+
+  .slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &.active {
+        background: #fff;
+        transform: scale(1.2);
+      }
+    }
+  }
+  
+  @media (max-width: 992px) { 
+    height: 350px; 
+  }
+}
+
+.modal-text {
+  padding: 3.5rem 3rem;
+  
+  @media (max-width: 576px) {
+    padding: 2rem 1.5rem;
+  }
+
+  .modal-tag { 
+    color: var(--secondary); 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+    letter-spacing: 1px;
+  }
+  
+  h2 { 
+    color: var(--primary); 
+    font-size: 2.2rem; 
+    margin: 0.5rem 0 1.5rem; 
+    font-weight: 800; 
+    line-height: 1.1;
+  }
+  
+  .description { 
+    color: var(--text-muted); 
+    line-height: 1.7; 
+    font-size: 1.05rem; 
+    margin-bottom: 2rem; 
+  }
+
+  .specs-container {
+    margin-bottom: 3rem;
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+
+    h3 { 
+      font-size: 1.1rem; 
+      color: var(--primary); 
+      margin-bottom: 1.2rem; 
+      font-weight: 700;
+    }
+    
+    ul {
+      list-style: none; 
+      padding: 0;
+      margin: 0;
+      
+      li { 
+        display: flex; 
+        align-items: flex-start; 
+        gap: 0.8rem; 
+        margin-bottom: 0.8rem; 
+        color: #475569; 
+        font-size: 0.95rem;
+        line-height: 1.5;
+        
+        &:last-child { margin-bottom: 0; }
+      }
+    }
+  }
+
+  .modal-cta {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    @media (max-width: 576px) {
+      width: 100%; 
+    }
+
+    &:hover { 
+      background: #1e293b; 
+      transform: translateY(-3px); 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+
+}
+}
+*/
