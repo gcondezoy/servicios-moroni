@@ -114,3 +114,181 @@ setMediaIndex(0); // Reinicia el slider a la primera imagen
 };
 
 return (
+
+
+  {/* HEADER */}
+  <header 
+    className="portfolio-hero"
+    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80')` }}
+  >
+    <div className="portfolio-hero__overlay"></div>
+    <div className="container relative-z">
+      <span className="overline">Portafolio</span>
+      <motion.h1 initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}>
+        Proyectos <span className="highlight">Destacados</span>
+      </motion.h1>
+      <motion.p initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ delay: 0.2 }}>
+        Nuestra experiencia técnica plasmada en obras reales.
+      </motion.p>
+    </div>
+  </header>
+
+  {/* GALERÍA */}
+  <section className="gallery-section">
+    <div className="container">
+      <div className="filter-tabs">
+        {categories.map(cat => (
+          <button 
+            key={cat} 
+            className={filter === cat ? 'active' : ''}
+            onClick={() => setFilter(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <motion.div layout className="gallery-grid">
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div 
+              key={project.id}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="gallery-item"
+              onClick={() => openProject(project)}
+            >
+              <img src={project.media[0].url} alt={project.title} loading="lazy" />
+              <div className="overlay">
+                <span className="tag">{project.category}</span>
+                <h3>{project.title}</h3>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  </section>
+
+  {/* MODAL CON SLIDER */}
+  <AnimatePresence>
+    {selectedProject && (
+      <motion.div 
+        className="project-modal-overlay"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSelectedProject(null)}
+      >
+        <motion.div 
+          className="project-modal-content"
+          initial={{ scale: 0.95, y: 30, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.95, y: 30, opacity: 0 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          onClick={(e) => e.stopPropagation()} 
+        >
+          <button className="close-btn" onClick={() => setSelectedProject(null)}>
+            <X size={24} />
+          </button>
+          
+          <div className="modal-scrollable">
+            <div className="modal-grid">
+              
+              {/* SLIDER CONTENEDOR */}
+              <div className="modal-media-container">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={mediaIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
+                  >
+                    {selectedProject.media[mediaIndex].type === 'video' ? (
+                      <video 
+                        src={selectedProject.media[mediaIndex].url} 
+                        controls 
+                        autoPlay 
+                        muted
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                      />
+                    ) : (
+                      <img 
+                        src={selectedProject.media[mediaIndex].url} 
+                        alt={`${selectedProject.title} - Vista ${mediaIndex + 1}`} 
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                      />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Controles del Slider */}
+                {selectedProject.media.length > 1 && (
+                  <>
+                    <button className="slider-btn prev" onClick={prevMedia}>
+                      <ChevronLeft size={28} />
+                    </button>
+                    <button className="slider-btn next" onClick={nextMedia}>
+                      <ChevronRight size={28} />
+                    </button>
+                    
+                    <div className="slider-dots">
+                      {selectedProject.media.map((_, idx) => (
+                        <button 
+                          key={idx}
+                          className={`slider-dot ${idx === mediaIndex ? 'active' : ''}`}
+                          onClick={() => setMediaIndex(idx)}
+                          aria-label={`Ver slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* INFORMACIÓN DEL PROYECTO */}
+              <div className="modal-text">
+                <span className="modal-tag">{selectedProject.category}</span>
+                <h2>{selectedProject.title}</h2>
+                <p className="description">{selectedProject.longDesc}</p>
+                
+                <div className="specs-container">
+                  <h3>Especificaciones Técnicas:</h3>
+                  <ul>
+                    {selectedProject.specs?.map((spec, index) => (
+                      <li key={index}>
+                        <CheckCircle size={18} color="var(--secondary)" style={{ flexShrink: 0 }} /> 
+                        {spec}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <a 
+                  href={`https://wa.me/51932528794?text=Hola,%20deseo%20cotizar%20información%20sobre%20el%20proyecto:%20${encodeURIComponent(selectedProject.title)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="modal-cta"
+                >
+                  Solicitar Cotización
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+
+
+);
+};
+
+export default Portfolio;
