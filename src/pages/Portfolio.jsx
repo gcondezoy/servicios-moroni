@@ -25,11 +25,11 @@ const Portfolio = () => {
     'Ajuste milimétrico y sellado perimetral contra muros y techo'
   ],
       media: [
-    { type: 'image', url: '/proyectos/closet-empotrado-de-melamina-a-medida.jpeg' },
-    { type: 'image', url: '/proyectos/closet-de-melamina-con-puertas-corredizas-y-repisas.jpeg' },
-    { type: 'image', url: '/proyectos/closet-empotrado-con-cajoneras-internas.jpeg' },
-    { type: 'image', url: '/proyectos/closet-maderado-de-piso-a-techo-servicios-moroni.jpeg' },
-    { type: 'image', url: '/proyectos/mueble-closet-de-melamina-para-dormitorio.jpeg' }
+    { type: 'image', url: '/closet-empotrado-de-melamina-a-medida.jpeg' },
+    { type: 'image', url: '/closet-de-melamina-con-puertas-corredizas-y-repisas.jpeg' },
+    { type: 'image', url: '/closet-empotrado-con-cajoneras-internas.jpeg' },
+    { type: 'image', url: '/closet-maderado-de-piso-a-techo-servicios-moroni.jpeg' },
+    { type: 'image', url: '/mueble-closet-de-melamina-para-dormitorio.jpeg' }
   ]
     },
     { 
