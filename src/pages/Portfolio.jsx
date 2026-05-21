@@ -15,7 +15,7 @@ const Portfolio = () => {
       id: 1, 
       title: 'Clóset Empotrado a Medida', 
       category: 'Carpinteria', 
-      img: '/proyectos/closet-empotrado-de-melamina-a-medida.jpeg',
+      img: '/closet-empotrado-de-melamina-a-medida.jpeg',
       longDesc: 'Diseño, fabricación e instalación de clóset empotrado de piso a techo con sistema de puertas corredizas. Optimizamos al máximo el espacio interior distribuyendo estratégicamente zonas de colgado, cajoneras reforzadas y múltiples niveles de repisas, todo con un acabado texturizado premium que combina estética y alta durabilidad.',
      specs: [
     'Melamina de alta densidad de 18mm con textura maderada',
