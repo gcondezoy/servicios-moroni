@@ -117,7 +117,7 @@ const Contacto = () => {
                     </div>
                     <div className="form-group">
                       <label>Teléfono / Celular</label>
-                      <input type="tel" name="telefono" placeholder="+51 999 999 999" onChange={handleChange} />
+                      <input type="tel" name="telefono" placeholder="+51924353323" onChange={handleChange} />
                     </div>
                   </div>
 
