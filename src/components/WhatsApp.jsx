@@ -4,7 +4,7 @@ import './WhatsApp.scss';
 const WhatsApp = () => {
   return (
     <a 
-      href="https://wa.me/51999999999" // Aquí luego cambias el número
+      href="https://wa.me/51924353323" // Aquí luego cambias el número
       className="whatsapp-float"
       target="_blank" 
       rel="noopener noreferrer"
