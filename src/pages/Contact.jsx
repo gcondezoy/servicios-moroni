@@ -65,7 +65,7 @@ const Contacto = () => {
                   <div className="icon-box"><FaMapMarkerAlt /></div>
                   <div>
                     <h3>Oficina Central</h3>
-                    <p>Av. Florencia de Mora, Trujillo - Perú</p>
+                    <p>Florencia de Mora, Trujillo - Perú</p>
                   </div>
                 </div>
 
