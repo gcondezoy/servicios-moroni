@@ -277,7 +277,7 @@ const Portfolio = () => {
                   </div>
 
                   <a 
-                    href={`https://wa.me/51999999999?text=Hola,%20deseo%20más%20información%20sobre%20el%20proyecto:%20${encodeURIComponent(selectedProject.title)}`}
+                    href={`https://wa.me/51924353323?text=Hola,%20deseo%20más%20información%20sobre%20el%20proyecto:%20${encodeURIComponent(selectedProject.title)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="modal-cta"
